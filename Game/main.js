@@ -14,6 +14,10 @@ let scrollSpeed = 4; // pixels being scrolled every frame
 let scrollBoxWidth = 140; // width of virtual box to activate scrolling (on the sides)
 let scrollBoxHeight = 440; // height of virtual box
 
+//Tower locations
+enemyTowerX = 1200;
+myTowerX = 60;
+
 //gamestats
 let xp = 0;
 let coins = 175;
@@ -202,7 +206,7 @@ function drawMenu() {
           text(unitPrices[stage][i], 200, 70);
           if(klikdeMuis){
             if(coins >= unitPrices[stage][i] && queueAmount < 5){
-              myUnits.push(new stageZero_first(myUnits.length));
+              myUnits.push(new Unit(myUnits.length, stage.toString()+"_"+(i+1).toString()));
               coins-= unitPrices[stage][i];
               queueAmount++;
             }
