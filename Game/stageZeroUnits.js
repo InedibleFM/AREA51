@@ -27,6 +27,8 @@ class Unit {
     this.target = "None"; // for long range units
     this.coinReward = unitType.coinReward;  //granted to opposite player if this unit is killed
     this.expReward = unitType.expReward; //granted to opposite player if this unit is killed
+    this.restingAnimationSpeed = unitType.restingAnimationSpeed;
+    this.movingAnimationSpeed = unitType.movingAnimationSpeed;
 
     //sprite framenumber
     this.frameNum = 0;
@@ -163,7 +165,7 @@ class Unit {
 
   animate() {
     if(this.moving && this.active && !this.attacking) {
-      this.frameNum += 0.12;
+      this.frameNum += this.movingAnimationSpeed;
       this.rounded_frame = floor(this.frameNum%(this.animation[0].length));
       image(this.animation[0][this.rounded_frame],floor(this.x-scrollPosition), this.y, this.width, this.height); //running animation
     }
@@ -171,12 +173,12 @@ class Unit {
       if(this.attacking) {  //attacking
         if(this.attackingStart) this.frameNum = 0;
         this.attackingStart = 0;
-        this.frameNum += this.animation[2].length/this.attackingDelay; //One attacki ng animation in one attacking phase
+        this.frameNum += this.animation[2].length/this.attackingDelay; //One attacking animation in one attacking phase
         this.rounded_frame = floor(this.frameNum%(this.animation[2].length));
         image(this.animation[2][this.rounded_frame],floor(this.x-scrollPosition), this.y, this.width, this.height); //attacking animation
       }
       else { //resting
-        this.frameNum += 0.08;
+        this.frameNum += this.restingAnimationSpeed;
         this.rounded_frame = floor(this.frameNum%(this.animation[1].length));
         image(this.animation[1][this.rounded_frame],floor(this.x-scrollPosition), this.y, this.width, this.height); //resting animation
       }
@@ -198,11 +200,12 @@ class DyingUnit {
     this.height = unitType.height;
     this.x = x;
     this.y = y;
+    this.frameSpeed = 0.15;
   }
 
   show(){
 
-    this.frameNum += 0.15;
+    this.frameNum += this.frameSpeed;
     this.rounded_frame = floor(this.frameNum);
     if(this.rounded_frame > this.animation[3].length-1)
       this.remove = 1;
