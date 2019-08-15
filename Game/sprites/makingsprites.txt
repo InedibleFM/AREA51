@@ -1,0 +1,26 @@
+json array
+
+https://www.codeandweb.com/free-sprite-sheet-packer
+
+
+
+stage1
+kyles		-	cops
+rock throwers	-	fbi guys
+KITT		-	swat car
+
+stage2
+zuckerberg	-	alien
+p90 guy		-	guy with alien gun
+naruto		-	predator
+
+stage3
+wii guy w/ laser-	ET
+rambo		-	laser eyed alien
+terminator	- 	big alien
+
+stage4
+		- 	demogorgon
+		
+kamikaze man	- 	manbearpig
+stage5
