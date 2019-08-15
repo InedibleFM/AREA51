@@ -1,13 +1,11 @@
 /*jshint esversion: 6 */
-class stageZero_first {
-  constructor(unitNumber){
-    this.
-
-    this.health = 75;
-    this.maxHealth = 60;
-    this.damage = 15;
-    this.width = 60;
-    this.height = 80;
+class Unit {
+  constructor(unitNumber, unitType){
+    this.health = unitType.maxHealth
+    this.maxHealth = unitType.maxHealth;
+    this.damage = unitType.damage;
+    this.width = unitType.width;
+    this.height = unitType.height;
     this.active = 0;
     this.x = 170;
     this.y = canvasHeight - 160;
@@ -17,14 +15,16 @@ class stageZero_first {
     this.unitNumber = unitNumber;
     this.speed = 0.5;
     this.attacking = 0;
-    this.attackingDelay = 80;
+    this.attackingDelay = unitType.attackingDelay;
     this.attackingCounter = 1;
     this.attackingStart = 0;
     this.dying = 0;
     this.hitFor = 0;
-    this.hasRange = 0; //If longe range: can do damage on a distance (while walking too)
+    this.hasRange = unitType.hasRange; //If longe range: can do damage on a distance (while walking too)
     this.dist = 0;
     this.target = "None";
+    this.coinReward = unitType.coinReward;
+    this.expReward = unitType.expReward;
 
     //sprite framenumber
     this.frameNum = 0;
