@@ -9,11 +9,11 @@ class Tower {
 
     if (this.isEnemy){
       this.healthbarX = fieldWidth - 40;
-      this.x = 1200;
+      this.x = enemyTowerX;
       this.textX = fieldWidth - 75;
     }
     else {
-      this.x = 60;
+      this.x = myTowerX;
       this.healthbarX = 20;
       this.textX = 45;
     }
