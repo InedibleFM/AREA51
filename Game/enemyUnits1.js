@@ -44,7 +44,7 @@ class EnemystageZero_first {
           this.moving = 1;
 
           // ATTACKING
-          if (this.x-this.hasRange <= 200){ // If unit within reach of enemytower
+          if (this.x-this.hasRange <= myTowerX+160){ // If unit within reach of enemytower
             this.attacking = 1; // start attacking
             if(!this.attacking) //if it just started attacking
               this.attackingStart = 1; // for reset animation

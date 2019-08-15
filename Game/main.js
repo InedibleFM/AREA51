@@ -19,7 +19,7 @@ enemyTowerX = 1200;
 myTowerX = 60;
 
 //gamestats
-let xp = 0;
+let exp = 0;
 let coins = 175;
 let stage = 0; //first stage
 let enemyStage = 0;//first stage
@@ -92,7 +92,8 @@ function draw() {
   drawQueue();
 
   if(frameCount%80 == 0)
-    enemyUnits.push(new EnemystageZero_first(enemyUnits.length));
+    enemyUnits.push(new Unit(enemyUnits.length, "unit"+(enemyStage+1).toString()+"_"+(1).toString(), true));
+
 
   scrollScreen(); // adjusts scrollPostion
   klikdeMuis = 0; // reset mouse is clicked
@@ -136,10 +137,10 @@ function drawTopLeftBox() {
   textSize(24);
   fill(0);
   text('Exp:', 11, 71); //text shadow
-  text(xp, 66, 71); //text shadow
+  text(exp, 66, 71); //text shadow
   fill(255, 0, 0);
   text('Exp:', 10, 70);
-  text(xp, 65, 70);
+  text(exp, 65, 70);
 
   // display coins
   fill(0);

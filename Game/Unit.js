@@ -1,21 +1,36 @@
 /*jshint esversion: 6 */
 class Unit {
   constructor(unitNumber, unitType, isEnemy){
+    this.unitType = unitType;
+    let unitTypeString = unitType;
+    if (isEnemy){
+      this.animation = eval("e_animation_stage" + unitTypeString.substring(4, 7));
+      unitTypeString = "e_"+unitTypeString;
+      this.speed = -0.5;
+      this.x = enemyTowerX+30;
+      this.moving = 1; // enemy has no queue, so starts moving
+      this.active = 1;  
+    }
+    else {
+      this.speed = 0.5;
+      this.x = 170;
+      this.active = 0;        // unit is not created yet    
+      this.moving = 0;
+      this.animation = eval("animation_stage" + unitTypeString.substring(4, 7));
+    }
+    unitType = eval(unitTypeString);
+    this.isEnemy = isEnemy;
     this.health = unitType.maxHealth;
     this.maxHealth = unitType.maxHealth;
     this.damage = unitType.damage;
     this.width = unitType.width;
     this.height = unitType.height;
-    this.active = 0;        // unit is not created yet
-    this.animation = eval("animation_stage" + unitType.substring(4, 7));
-    this.x = 170;
     this.y = canvasHeight - 160;
     this.timeLeft = 100;
     this.beingCreated = 0;
-    this.moving = 0;
+    
     this.enemyOverlap = -20; // Overlapping of the unit with an enemy (looks better) 
     this.unitNumber = unitNumber;
-    this.speed = 0.5;
     this.attacking = 0;
     this.attackingDelay = unitType.attackingDelay; //delay in frames for attacking
     this.attackingCounter = 1;
@@ -37,20 +52,31 @@ class Unit {
   }
 
   show(scrollPosition){
-    if(this.active) {
+    if(this.active || this.isEnemy) {
 
       if (this.moving)
         this.x += this.speed;
 
       // DETERMINE MOVEMENT
-      if (this.unitNumber > 0 && this.x >= myUnits[this.unitNumber-1].x-this.width) // waiting on unit in front
-        this.moving = 0;
-      else if (this.x >= enemyTowerX-this.width) //at the enemy tower
-        this.moving = 0;
-      else if(enemyUnits.length > 0 && enemyUnits[0].x -  (this.x + this.width) <= this.enemyOverlap) //facing enemy
-        this.moving = 0;
-      else
-        this.moving = 1;
+      if(!this.isEnemy){
+        if (this.unitNumber > 0 && this.x >= myUnits[this.unitNumber-1].x-this.width) // waiting on unit in front
+          this.moving = 0;
+        else if (this.x >= enemyTowerX-this.width) //at the enemy tower
+          this.moving = 0;
+        else if(enemyUnits.length > 0 && enemyUnits[0].x -  (this.x + this.width) <= this.enemyOverlap) //facing enemy
+          this.moving = 0;
+        else
+          this.moving = 1;
+      }else {
+        if (this.unitNumber > 0 && this.x <= enemyUnits[this.unitNumber-1].x+enemyUnits[this.unitNumber-1].width) // waiting on unit in front
+          this.moving = 0;
+        else if (this.x <= myTowerX+140) //at the enemy tower
+          this.moving = 0;
+        else if(myUnits.length > 0 && myUnits[0].x+myUnits[0].width -  this.x >= 0) //facing enemy
+          this.moving = 0;
+        else
+          this.moving = 1;
+      }
 
 
 
@@ -61,82 +87,164 @@ class Unit {
         this.hitFor = 0;
       }
       if (this.health <= 0) {
-        myUnits.splice(this.unitNumber,1);
-        for (let i = 0; i<myUnits.length; i++){
-          myUnits[i].unitNumber = i;
+        if(this.isEnemy){
+          coins += this.coinReward;
+          exp += this.expReward;
+          enemyUnits.splice(this.unitNumber,1);
+          for (let i = 0; i<enemyUnits.length; i++){
+            enemyUnits[i].unitNumber = i;
+          }
+          enemyDyingUnits.push(new EnemystageZero_firstDying(enemyDyingUnits.length, this.x, this.y, this.width, this.height));
+        }
+        else{
+          myUnits.splice(this.unitNumber,1);
+          for (let i = 0; i<myUnits.length; i++){
+            myUnits[i].unitNumber = i;
+            }
+            myDyingUnits.push(new DyingUnit(myDyingUnits.length, this.x, this.y, this.animation, this.unitType, false));
         }
         deathSound.play();
-        myDyingUnits.push(new DyingUnit(myDyingUnits.length, this.x, this.y, this.unitType));
       }
 
 
-      // ATTACKING
-      if (this.x+this.hasRange >= enemyTowerX-this.width){ // If unit within reach of enemytower
-        this.attacking = 1; // start attacking
-        if(!this.attacking) //if it just started attacking
-          this.attackingStart = 1; // for reset animation
-        if(this.attackingCounter%this.attackingDelay == 0) {
-          if(enemyUnits.length == 0) { //If enemy tower is under attack, attack with attackingdelay
-            if(this.hasRange){
-              this.dist = 1200 - this.x+this.width;
-              if (this.dist > 5) {
-                this.target = "tower";
-                projectiles.push(new projectile_1(this.target, this.dist, this.x+this.width, this.damage));
+      // ATTACKING (FIXME: merge enemy and non enemy parts)
+      if(!this.isEnemy){
+        if (this.x+this.hasRange >= enemyTowerX-this.width){ // If unit within reach of enemytower
+          this.attacking = 1; // start attacking
+          if(!this.attacking) //if it just started attacking
+            this.attackingStart = 1; // for reset animation
+          if(this.attackingCounter%this.attackingDelay == 0) {
+            if(enemyUnits.length == 0) { //If enemy tower is under attack, attack with attackingdelay
+              if(this.hasRange){
+                this.dist = 1200 - this.x+this.width;
+                if (this.dist > 5) {
+                  this.target = "tower";
+                  projectiles.push(new projectile_1(this.target, this.dist, this.x+this.width, this.damage));
+                }
+                else {
+                  theEnemyTower.health -= this.damage;
+                  hitSound.play();
+                }
               }
-              else {
+              else{
                 theEnemyTower.health -= this.damage;
                 hitSound.play();
               }
             }
-            else{
-              theEnemyTower.health -= this.damage;
-              hitSound.play();
+            else {
+              if(this.hasRange){
+                this.dist = enemyUnits[0].x-this.x+this.width;
+                if (this.dist > 5) {
+                  this.target = "unit";
+                  projectiles.push(new projectile_1(this.target, this.dist, this.x+this.width, this.damage));
+                }
+                else {
+                  enemyUnits[0].health -= this.damage;
+                  hitSound.play();
+                }
+              }
+              else{
+                enemyUnits[0].health -= this.damage;
+                hitSound.play();
+              }
             }
           }
-          else {
-            if(this.hasRange){
-              this.dist = enemyUnits[0].x-this.x+this.width;
-              if (this.dist > 5) {
-                this.target = "unit";
-                projectiles.push(new projectile_1(this.target, this.dist, this.x+this.width, this.damage));
+        }
+        else if (enemyUnits.length > 0 && this.x+this.hasRange+this.width >= enemyUnits[0].x){
+            this.attacking = 1;
+            if(!this.attacking) //if it just started attacking
+              this.attackingStart = 1; // for reset animation
+            if(this.attackingCounter%this.attackingDelay == 0) {
+              if(this.hasRange){
+                this.dist = enemyUnits[0].x-this.x+this.width;
+                if (this.dist > 5) {
+                  this.target = "unit";
+                  projectiles.push(new projectile_1(this.target, this.dist,  this.x+this.width, this.damage));
+                }
+                else {
+                  enemyUnits[0].health -= this.damage;
+                  hitSound.play();
+                }
               }
               else {
                 enemyUnits[0].health -= this.damage;
                 hitSound.play();
               }
             }
-            else{
-              enemyUnits[0].health -= this.damage;
-              hitSound.play();
-            }
-          }
+        }
+        else {
+            this.attacking = 0;
         }
       }
-      else if (enemyUnits.length > 0 && this.x+this.hasRange+this.width >= enemyUnits[0].x){
-          this.attacking = 1;
+      else {
+        if (this.x-this.hasRange <= myTowerX+160){ // If unit within reach of enemytower
+          this.attacking = 1; // start attacking
           if(!this.attacking) //if it just started attacking
             this.attackingStart = 1; // for reset animation
           if(this.attackingCounter%this.attackingDelay == 0) {
-            if(this.hasRange){
-              this.dist = enemyUnits[0].x-this.x+this.width;
-              if (this.dist > 5) {
-                this.target = "unit";
-                projectiles.push(new projectile_1(this.target, this.dist,  this.x+this.width, this.damage));
+            if(myUnits.length == 0) { //If my tower is under attack, attack with attackingdelay
+              if(this.hasRange){
+                this.dist = this.x-200;
+                if (this.dist > 5) {
+                  this.target = "tower";
+                  projectiles.push(new Enemy_projectile_1(this.target, this.dist, this.x, this.damage));
+                }
+                else {
+                  myBaseTower.health -= this.damage;
+                  hitSound.play();
+                }
               }
-              else {
-                enemyUnits[0].health -= this.damage;
+              else{
+                myBaseTower.health -= this.damage;
                 hitSound.play();
               }
             }
             else {
-              enemyUnits[0].health -= this.damage;
-              hitSound.play();
+              if(this.hasRange){
+                this.dist = myUnits[0].x-this.x+this.width;
+                if (this.dist > 5) {
+                  this.target = "unit";
+                  projectiles.push(new Enemy_projectile_1(this.target, this.dist, this.x+this.width, this.damage));
+                }
+                else {
+                  myUnits[0].health -= this.damage;
+                  hitSound.play();
+                }
+              }
+              else{
+                myUnits[0].health -= this.damage;
+                hitSound.play();
+              }
             }
           }
+        }
+        else if (myUnits.length > 0 && this.x-this.hasRange <= myUnits[0].x+myUnits[0].width){ //within range of my unit
+            this.attacking = 1;
+            if(!this.attacking) //if it just started attacking
+              this.attackingStart = 1; // for reset animation
+            if(this.attackingCounter%this.attackingDelay == 0) {
+              if(this.hasRange){
+                this.dist = myUnits[0].x+this.x+myUnits[0].width;
+                if (this.dist > 5) {
+                  this.target = "unit";
+                  projectiles.push(new Enemy_projectile_1(this.target, this.dist,  this.x+this.width, this.damage));
+                }
+                else {
+                  myUnits[0].health -= this.damage;
+                  hitSound.play();
+                }
+              }
+              else {
+                myUnits[0].health -= this.damage;
+                hitSound.play();
+              }
+            }
+        }
+        else {
+            this.attacking = 0;
+        }
       }
-      else {
-          this.attacking = 0;
-      }
+
 
 
       if (this.attacking) this.attackingCounter++; // FOR ANIMATION AND ATTACKING SPEED
@@ -166,15 +274,14 @@ class Unit {
     }
   }
 
-  animate() {
+  animate(scrollPosition) {
 
     if(this.moving && this.active && !this.attacking) {
       this.frameNum += this.movingAnimationSpeed;
       this.rounded_frame = floor(this.frameNum%this.animation[0].length);
-      print(this.movingAnimationSpeed + 5);
       image(this.animation[0][this.rounded_frame],floor(this.x-scrollPosition), this.y, this.width, this.height); //running animation
     }
-    else if(this.active)  //if not moving but still alive
+    else if(this.active){  //if not moving but still alive
       if(this.attacking) {  //attacking
         if(this.attackingStart) this.frameNum = 0;
         this.attackingStart = 0;
@@ -187,16 +294,19 @@ class Unit {
         this.rounded_frame = floor(this.frameNum%(this.animation[1].length));
         image(this.animation[1][this.rounded_frame],floor(this.x-scrollPosition), this.y, this.width, this.height); //resting animation
       }
+    }
   }
 }
 
 
 class DyingUnit {
-  constructor(dyingUnitNumber, x, y, unitType){
+  constructor(dyingUnitNumber, x, y, animation, unitType, isEnemy){
+    let unitTypeString = unitType;
+    unitType = eval(unitTypeString);
     this.number = dyingUnitNumber;
     this.frameNum = 0;
     this.rounded_frame = 0;
-    this.animation = window["animation_state" + unitType];
+    this.animation = animation;
     this.remove = 0;
     this.width = unitType.width;
     this.height = unitType.height;
