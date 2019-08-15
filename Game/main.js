@@ -206,7 +206,7 @@ function drawMenu() {
           text(unitPrices[stage][i], 200, 70);
           if(klikdeMuis){
             if(coins >= unitPrices[stage][i] && queueAmount < 5){
-              myUnits.push(new Unit(myUnits.length, stage.toString()+"_"+(i+1).toString(), false));
+              myUnits.push(new Unit(myUnits.length, "unit"+(stage+1).toString()+"_"+(i+1).toString(), false));
               coins-= unitPrices[stage][i];
               queueAmount++;
             }

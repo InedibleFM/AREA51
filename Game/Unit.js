@@ -7,7 +7,7 @@ class Unit {
     this.width = unitType.width;
     this.height = unitType.height;
     this.active = 0;        // unit is not created yet
-    this.animation = eval("animation_state" + unitType);
+    this.animation = eval("animation_stage" + unitType.substring(4, 7));
     this.x = 170;
     this.y = canvasHeight - 160;
     this.timeLeft = 100;
@@ -33,10 +33,12 @@ class Unit {
     //sprite framenumber
     this.frameNum = 0;
     this.rounded_frame = 0; //will become the rounded value of this.frameNum for the indices
+
   }
 
   show(scrollPosition){
     if(this.active) {
+
       if (this.moving)
         this.x += this.speed;
 
@@ -51,6 +53,7 @@ class Unit {
         this.moving = 1;
 
 
+
       // HEALTH
       if(this.hitFor){
         //animate blood?
@@ -63,7 +66,7 @@ class Unit {
           myUnits[i].unitNumber = i;
         }
         deathSound.play();
-        myDyingUnits.push(new stageZero_firstDying(myDyingUnits.length, this.x, this.y, this.width, this.height));
+        myDyingUnits.push(new DyingUnit(myDyingUnits.length, this.x, this.y, this.unitType));
       }
 
 
@@ -164,9 +167,11 @@ class Unit {
   }
 
   animate() {
+
     if(this.moving && this.active && !this.attacking) {
       this.frameNum += this.movingAnimationSpeed;
-      this.rounded_frame = floor(this.frameNum%(this.animation[0].length));
+      this.rounded_frame = floor(this.frameNum%this.animation[0].length);
+      print(this.movingAnimationSpeed + 5);
       image(this.animation[0][this.rounded_frame],floor(this.x-scrollPosition), this.y, this.width, this.height); //running animation
     }
     else if(this.active)  //if not moving but still alive
