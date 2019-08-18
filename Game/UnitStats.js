@@ -14,13 +14,13 @@ let unit1_1 = {
 
 let unit1_2 = {
 	maxHealth: 75,
-	damage: 15,
+	damage: 75,
     width: 42,
     height: 70,
     coinReward: 20,
     expReward: 100,
     attackingDelay: 80,
-    hasRange: 100,
+    hasRange: 500,
     restingAnimationSpeed: 0.08,
 	movingAnimationSpeed: 0.12
 }
