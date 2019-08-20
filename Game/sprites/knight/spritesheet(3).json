@@ -1,213 +1,192 @@
 {
 	"frames": [
 		{
-			"filename": "tile029.png",
+			"filename": "tile000.png",
 			"frame": {
-				"x": 1,
-				"y": 1,
-				"w": 32,
-				"h": 32
+				"x": 0,
+				"y": 0,
+				"w": 42,
+				"h": 42
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			},
 			"sourceSize": {
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			}
 		},
 		{
-			"filename": "tile030.png",
+			"filename": "tile001.png",
 			"frame": {
-				"x": 35,
-				"y": 1,
-				"w": 32,
-				"h": 32
+				"x": 42,
+				"y": 0,
+				"w": 42,
+				"h": 42
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			},
 			"sourceSize": {
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			}
 		},
 		{
-			"filename": "tile031.png",
+			"filename": "tile002.png",
 			"frame": {
-				"x": 69,
-				"y": 1,
-				"w": 32,
-				"h": 32
+				"x": 84,
+				"y": 0,
+				"w": 42,
+				"h": 42
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			},
 			"sourceSize": {
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			}
 		},
 		{
-			"filename": "tile032.png",
+			"filename": "tile003.png",
 			"frame": {
-				"x": 1,
-				"y": 35,
-				"w": 32,
-				"h": 32
+				"x": 0,
+				"y": 42,
+				"w": 42,
+				"h": 42
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			},
 			"sourceSize": {
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			}
 		},
 		{
-			"filename": "tile033.png",
+			"filename": "tile004.png",
 			"frame": {
-				"x": 35,
-				"y": 35,
-				"w": 32,
-				"h": 32
+				"x": 42,
+				"y": 42,
+				"w": 42,
+				"h": 42
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			},
 			"sourceSize": {
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			}
 		},
 		{
-			"filename": "tile034.png",
+			"filename": "tile005.png",
 			"frame": {
-				"x": 69,
-				"y": 35,
-				"w": 32,
-				"h": 32
+				"x": 84,
+				"y": 42,
+				"w": 42,
+				"h": 42
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			},
 			"sourceSize": {
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			}
 		},
 		{
-			"filename": "tile035.png",
+			"filename": "tile006.png",
 			"frame": {
-				"x": 1,
-				"y": 69,
-				"w": 32,
-				"h": 32
+				"x": 0,
+				"y": 84,
+				"w": 42,
+				"h": 42
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			},
 			"sourceSize": {
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			}
 		},
 		{
-			"filename": "tile036.png",
+			"filename": "tile007.png",
 			"frame": {
-				"x": 35,
-				"y": 69,
-				"w": 32,
-				"h": 32
+				"x": 42,
+				"y": 84,
+				"w": 42,
+				"h": 42
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			},
 			"sourceSize": {
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			}
 		},
 		{
-			"filename": "tile037.png",
+			"filename": "tile008.png",
 			"frame": {
-				"x": 69,
-				"y": 69,
-				"w": 32,
-				"h": 32
+				"x": 84,
+				"y": 84,
+				"w": 42,
+				"h": 42
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			},
 			"sourceSize": {
-				"w": 32,
-				"h": 32
-			}
-		},
-		{
-			"filename": "tile038.png",
-			"frame": {
-				"x": 103,
-				"y": 1,
-				"w": 32,
-				"h": 32
-			},
-			"rotated": false,
-			"trimmed": false,
-			"spriteSourceSize": {
-				"x": 0,
-				"y": 0,
-				"w": 32,
-				"h": 32
-			},
-			"sourceSize": {
-				"w": 32,
-				"h": 32
+				"w": 42,
+				"h": 42
 			}
 		}
 	],
@@ -217,8 +196,8 @@
 		"image": "spritesheet.png",
 		"format": "RGBA8888",
 		"size": {
-			"w": 136,
-			"h": 102
+			"w": 126,
+			"h": 126
 		},
 		"scale": "1"
 	}

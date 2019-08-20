@@ -14,7 +14,7 @@ let unit1_1 = {
 
 let unit1_2 = {
 	maxHealth: 75,
-	damage: 75,
+	damage: 15,
     width: 42,
     height: 70,
     coinReward: 20,
@@ -28,7 +28,7 @@ let unit1_2 = {
 
 let e_unit1_1 = {
 	maxHealth: 75,
-	damage: 200,
+	damage: 15,
     width: 60,
     height: 90,
     coinReward: 20,

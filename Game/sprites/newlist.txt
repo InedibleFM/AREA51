@@ -1,21 +1,34 @@
 NEW SPRITES LIST
 
+json array
+
+https://www.codeandweb.com/free-sprite-sheet-packer
+
+
+
 Stage 1 (nu)
-poppetje met hooivork		- 	cops
-rock throwers			- 	fbi guys
+poppetje met hooivork		- 	cops/fbi
+rock throwers			- 	green alien
 stier met poppetje erop		- 	swat car
 
 stage 2(game)
 link				- 	pacman ghost
-mario fireball			-	
-donkey kong			-	bowser
+mario fireball			-	ranged street fighter man
+donkey kong			-	mecha hitler
 
 stage3(game 2)
-minecraft steve			-	
-csgo poppetje			-	skeleton
+minecraft steve			-	zombie van plants vs zombies
+csgo poppetje			-	matt wii sports tennis
+gta tank (cheat code)		-	gengar
+
+stage 4(movie stage)
+jedi				-	agent smith matrix
+rambo (machinegun)		- 	real terminator
+KITt				-	
+
+stage 5(internet
+zuckerberg	
+
+				- thanos		
 
 
-stage 4(internet
-zuckerberg
-
-stage 5(retro internet 80s)
