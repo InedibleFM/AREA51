@@ -11,7 +11,8 @@ let e_sheet_stage1_2 = [];
 let e_json_stage1_2 = [];
 
 function preload() {
-  backgroundimg = loadImage('images/area51.jpg'); // decor image
+  backgroundimg = loadImage('images/area51.png'); // decor image
+  bottomimg = loadImage('images/bottom.png'); // decor image
   hitSound = loadSound('sounds/hit.wav');
   deathSound = loadSound('sounds/death.wav');
 

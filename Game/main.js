@@ -103,9 +103,9 @@ function draw() {
 
 function drawDecor() {
   //background(104, 174, 209);
-  image(backgroundimg, 0-scrollPosition, 0, 1400, 640);
-  fill(0, 150, 0);
-  rect(0, canvasHeight - 100, canvasWidth, 100);
+  image(backgroundimg, 0-scrollPosition, 0, 1400, 540);
+  fill(180, 120, 0);
+  rect(0-scrollPosition, canvasHeight - 100, 1400, 100);
 }
 
 function drawQueue(){
