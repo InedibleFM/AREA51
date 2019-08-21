@@ -50,7 +50,7 @@ let e_unit1_1 = {
     attackingDelay: 80,
     hasRange: 0,
     restingAnimationSpeed: 0.1,
-    movingAnimationSpeed: 0.2
+    movingAnimationSpeed: 0.1
 }
 
 
