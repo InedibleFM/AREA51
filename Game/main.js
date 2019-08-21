@@ -91,7 +91,7 @@ function draw() {
   drawMenu();
   drawQueue();
 
-  if(frameCount%300 == 0)
+  if(frameCount%700 == 0)
     enemyUnits.push(new Unit(enemyUnits.length, "unit"+(enemyStage+1).toString()+"_"+(1).toString(), true));
 
 
