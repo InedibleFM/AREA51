@@ -28,8 +28,8 @@ let unit1_2 = {
 let unit1_3 = {
     maxHealth: 120,
     damage: 20,
-    width: 200,
-    height: 70,
+    width: 140,
+    height: 100,
     coinReward: 20,
     expReward: 100,
     attackingDelay: 100,
