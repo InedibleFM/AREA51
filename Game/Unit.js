@@ -25,7 +25,11 @@ class Unit {
     this.damage = unitType.damage;
     this.width = unitType.width;
     this.height = unitType.height;
-    this.y = canvasHeight - 160;
+    this.actualwidth = unitType.actualwidth;
+    this.actualheight = unitType.actualheight;
+    this.x_offset = unitType.x_offset;
+    this.y_offset = unitType.y_offset;
+    this.y = canvasHeight - this.actualheight-80-this.y_offset;
     this.timeLeft = 100;
     this.beingCreated = 0;
     
@@ -59,20 +63,20 @@ class Unit {
 
       // DETERMINE MOVEMENT
       if(!this.isEnemy){
-        if (this.unitNumber > 0 && this.x >= myUnits[this.unitNumber-1].x-this.width) // waiting on unit in front
+        if (this.unitNumber > 0 && this.x >= myUnits[this.unitNumber-1].x-this.actualwidth) // waiting on unit in front
           this.moving = 0;
-        else if (this.x >= enemyTowerX-this.width) //at the enemy tower
+        else if (this.x >= enemyTowerX-this.actualwidth) //at the enemy tower
           this.moving = 0;
-        else if(enemyUnits.length > 0 && enemyUnits[0].x -  (this.x + this.width) <= this.enemyOverlap) //facing enemy
+        else if(enemyUnits.length > 0 && enemyUnits[0].x -  (this.x + this.actualwidth) <= this.enemyOverlap) //facing enemy
           this.moving = 0;
         else
           this.moving = 1;
       }else {
-        if (this.unitNumber > 0 && this.x <= enemyUnits[this.unitNumber-1].x+enemyUnits[this.unitNumber-1].width) // waiting on unit in front
+        if (this.unitNumber > 0 && this.x <= enemyUnits[this.unitNumber-1].x+enemyUnits[this.unitNumber-1].actualwidth) // waiting on unit in front
           this.moving = 0;
         else if (this.x <= myTowerX+140) //at the enemy tower
           this.moving = 0;
-        else if(myUnits.length > 0 && myUnits[0].x+myUnits[0].width -  this.x >= 0) //facing enemy
+        else if(myUnits.length > 0 && myUnits[0].x+myUnits[0].actualwidth -  this.x >= 0) //facing enemy
           this.moving = 0;
         else
           this.moving = 1;
@@ -109,17 +113,17 @@ class Unit {
 
       // ATTACKING (FIXME: merge enemy and non enemy parts)
       if(!this.isEnemy){
-        if (this.x+this.hasRange >= enemyTowerX-this.width){ // If unit within reach of enemytower
+        if (this.x+this.hasRange >= enemyTowerX-this.actualwidth){ // If unit within reach of enemytower
           this.attacking = 1; // start attacking
           if(!this.attacking) //if it just started attacking
             this.attackingStart = 1; // for reset animation
           if(this.attackingCounter%this.attackingDelay == 0) {
             if(enemyUnits.length == 0) { //If enemy tower is under attack, attack with attackingdelay
               if(this.hasRange){
-                this.dist = 1200 - this.x+this.width;
+                this.dist = 1200 - this.x+this.actualwidth;
                 if (this.dist > 5) {
                   this.target = "tower";
-                  projectiles.push(new projectile_1(this.target, this.dist, this.x+this.width, this.damage));
+                  projectiles.push(new projectile_1(this.target, this.dist, this.x+this.actualwidth, this.damage));
                 }
                 else {
                   theEnemyTower.health -= this.damage;
@@ -133,10 +137,10 @@ class Unit {
             }
             else {
               if(this.hasRange){
-                this.dist = enemyUnits[0].x-this.x+this.width;
+                this.dist = enemyUnits[0].x-this.x+this.actualwidth;
                 if (this.dist > 5) {
                   this.target = "unit";
-                  projectiles.push(new projectile_1(this.target, this.dist, this.x+this.width, this.damage));
+                  projectiles.push(new projectile_1(this.target, this.dist, this.x+this.actualwidth, this.damage));
                 }
                 else {
                   enemyUnits[0].health -= this.damage;
@@ -218,16 +222,16 @@ class Unit {
             }
           }
         }
-        else if (myUnits.length > 0 && this.x-this.hasRange <= myUnits[0].x+myUnits[0].width){ //within range of my unit
+        else if (myUnits.length > 0 && this.x-this.hasRange <= myUnits[0].x+myUnits[0].actualwidth){ //within range of my unit
             this.attacking = 1;
             if(!this.attacking) //if it just started attacking
               this.attackingStart = 1; // for reset animation
             if(this.attackingCounter%this.attackingDelay == 0) {
               if(this.hasRange){
-                this.dist = myUnits[0].x+this.x+myUnits[0].width;
+                this.dist = myUnits[0].x+this.x+myUnits[0].actualwidth;
                 if (this.dist > 5) {
                   this.target = "unit";
-                  projectiles.push(new Enemy_projectile_1(this.target, this.dist,  this.x+this.width, this.damage));
+                  projectiles.push(new Enemy_projectile_1(this.target, this.dist,  this.x+this.actualwidth, this.damage));
                 }
                 else {
                   myUnits[0].health -= this.damage;
@@ -250,12 +254,12 @@ class Unit {
       if (this.attacking) this.attackingCounter++; // FOR ANIMATION AND ATTACKING SPEED
 
       // HEALTH BAR OF UNIT
-      if(mouseX > this.x-scrollPosition && mouseX < this.x-scrollPosition+this.width && mouseY > this.y && mouseY < this.y+this.height) //mouse is on unit
+      if(mouseX > this.x-scrollPosition && mouseX < this.x-scrollPosition+this.actualwidth && mouseY > this.y && mouseY < this.y+this.height) //mouse is on unit
         { // show health bar
           fill(120);
-          rect(this.x-scrollPosition+this.width/4, this.y-5, this.width/2, 5);
+          rect(this.x-scrollPosition+this.actualwidth/4, this.y-5, this.actualwidth/2, 5);
           fill(255, 0, 0);
-          rect(this.x-scrollPosition+this.width/4, this.y-5, 0.5*this.width*this.health/this.maxHealth, 5);
+          rect(this.x-scrollPosition+this.actualwidth/4, this.y-5, 0.5*this.actualwidth*this.health/this.maxHealth, 5);
         }
     }
 
