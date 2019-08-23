@@ -91,7 +91,7 @@ function draw() {
   drawMenu();
   drawQueue();
 
-  if(frameCount%300 == 0)
+  if(frameCount%700 == 0)
     enemyUnits.push(new Unit(enemyUnits.length, "unit"+(enemyStage+1).toString()+"_"+(1).toString(), true));
 
 
@@ -103,9 +103,9 @@ function draw() {
 
 function drawDecor() {
   //background(104, 174, 209);
-  image(backgroundimg, 0-scrollPosition, 0, 1400, 640);
-  fill(0, 150, 0);
-  rect(0, canvasHeight - 100, canvasWidth, 100);
+  image(backgroundimg, 0-scrollPosition, 0, 1400, 540);
+  fill(180, 120, 0);
+  rect(0-scrollPosition, canvasHeight - 100, 1400, 100);
 }
 
 function drawQueue(){
@@ -130,8 +130,11 @@ function drawQueue(){
 
 function drawTopLeftBox() {
   // Background
-  fill(227, 210, 140);
+  stroke(130, 80, 0);
+  strokeWeight(3);
+  fill(206, 161, 103);
   rect(0, 0, 180, 90);
+  noStroke();
 
   // display Exp
   textSize(24);
@@ -146,14 +149,17 @@ function drawTopLeftBox() {
   fill(0);
   text('Coins:', 11, 31); //shadow
   text(coins, 101, 31); //shadow
-  fill(220, 170, 0);
+  fill(255, 216, 0);
   text('Coins:', 10, 30);
   text(coins, 100, 30);
 }
 
 function drawMenuBox() { // only background
-  fill(227, 210, 140);
+  stroke(130, 80, 0);
+  strokeWeight(3);
+  fill(206, 161, 103);
   rect(600, 0, 360, 90);
+  noStroke();
 }
 
 function drawMenu() {
@@ -191,8 +197,18 @@ function drawMenu() {
     rect(627+19, 21+28, 10, 10); //neck
     rect(627+8, 21+33, 30, 15); // body
     for(let i = 693; i<=823; i+=65) placeTurretIcon(i-2, 21); //turret icons
-    fill(240, 190, 0);
+    fill(255, 216, 0);
     star(912, 45, 8, 20, 5);
+    
+    // green text on turrets
+    textSize(28);
+    fill(0);
+    text("$",759, 51);
+    text("+",824, 51);
+    fill(0, 200, 0);
+    text("$",758, 50);
+    text("+",823, 50);
+
   }//end if mainMenu
 
   else if (trainingMenu) {
@@ -203,7 +219,7 @@ function drawMenu() {
         fill(0);
         if (i<4) {
           text(unitPrices[stage][i], 201, 71);
-          fill(240, 190, 0);
+          fill(255, 216, 0);
           text(unitPrices[stage][i], 200, 70);
           if(klikdeMuis){
             if(coins >= unitPrices[stage][i] && queueAmount < 5){
@@ -226,6 +242,9 @@ function drawMenu() {
       strokeWeight(3);
       rect(ipos, 21, 48, 48); // draw blocks
       noStroke();
+      // draw unit icons
+      if(i<4)
+        image(unitIcons[i], ipos+6, 21+10, 48-6, 48-10);
   }
   // Draw icons on blocks
   fill(255, 0, 0); //red

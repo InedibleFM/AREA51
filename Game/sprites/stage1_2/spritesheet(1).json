@@ -1,87 +1,66 @@
 {
 	"frames": [
 		{
-			"filename": "idle1.png",
+			"filename": "tile000.png",
 			"frame": {
 				"x": 0,
 				"y": 0,
-				"w": 33,
-				"h": 35
+				"w": 32,
+				"h": 32
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 33,
-				"h": 35
+				"w": 32,
+				"h": 32
 			},
 			"sourceSize": {
-				"w": 33,
-				"h": 35
+				"w": 32,
+				"h": 32
 			}
 		},
 		{
-			"filename": "idle2.png",
+			"filename": "tile004.png",
 			"frame": {
-				"x": 33,
+				"x": 32,
 				"y": 0,
-				"w": 33,
-				"h": 35
+				"w": 32,
+				"h": 32
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 33,
-				"h": 35
+				"w": 32,
+				"h": 32
 			},
 			"sourceSize": {
-				"w": 33,
-				"h": 35
+				"w": 32,
+				"h": 32
 			}
 		},
 		{
-			"filename": "idle3.png",
+			"filename": "tile009.png",
 			"frame": {
-				"x": 66,
-				"y": 0,
-				"w": 33,
-				"h": 36
+				"x": 0,
+				"y": 32,
+				"w": 32,
+				"h": 32
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 33,
-				"h": 36
+				"w": 32,
+				"h": 32
 			},
 			"sourceSize": {
-				"w": 33,
-				"h": 36
-			}
-		},
-		{
-			"filename": "idle4.png",
-			"frame": {
-				"x": 0,
-				"y": 36,
-				"w": 33,
-				"h": 36
-			},
-			"rotated": false,
-			"trimmed": false,
-			"spriteSourceSize": {
-				"x": 0,
-				"y": 0,
-				"w": 33,
-				"h": 36
-			},
-			"sourceSize": {
-				"w": 33,
-				"h": 36
+				"w": 32,
+				"h": 32
 			}
 		}
 	],
@@ -91,8 +70,8 @@
 		"image": "spritesheet.png",
 		"format": "RGBA8888",
 		"size": {
-			"w": 99,
-			"h": 72
+			"w": 64,
+			"h": 64
 		},
 		"scale": "1"
 	}

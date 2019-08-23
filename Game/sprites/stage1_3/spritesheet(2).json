@@ -1,0 +1,183 @@
+{
+	"frames": [
+		{
+			"filename": "0.png",
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 72,
+				"h": 50
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 72,
+				"h": 50
+			},
+			"sourceSize": {
+				"w": 72,
+				"h": 50
+			}
+		},
+		{
+			"filename": "01.png",
+			"frame": {
+				"x": 72,
+				"y": 0,
+				"w": 72,
+				"h": 50
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 72,
+				"h": 50
+			},
+			"sourceSize": {
+				"w": 72,
+				"h": 50
+			}
+		},
+		{
+			"filename": "1 - kopie (2).png",
+			"frame": {
+				"x": 0,
+				"y": 50,
+				"w": 72,
+				"h": 50
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 72,
+				"h": 50
+			},
+			"sourceSize": {
+				"w": 72,
+				"h": 50
+			}
+		},
+		{
+			"filename": "1 - kopie (3).png",
+			"frame": {
+				"x": 72,
+				"y": 50,
+				"w": 72,
+				"h": 50
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 72,
+				"h": 50
+			},
+			"sourceSize": {
+				"w": 72,
+				"h": 50
+			}
+		},
+		{
+			"filename": "1 - kopie (4).png",
+			"frame": {
+				"x": 0,
+				"y": 100,
+				"w": 72,
+				"h": 50
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 72,
+				"h": 50
+			},
+			"sourceSize": {
+				"w": 72,
+				"h": 50
+			}
+		},
+		{
+			"filename": "1 - kopie (5).png",
+			"frame": {
+				"x": 72,
+				"y": 100,
+				"w": 72,
+				"h": 50
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 72,
+				"h": 50
+			},
+			"sourceSize": {
+				"w": 72,
+				"h": 50
+			}
+		},
+		{
+			"filename": "1 - kopie (6).png",
+			"frame": {
+				"x": 144,
+				"y": 0,
+				"w": 72,
+				"h": 50
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 72,
+				"h": 50
+			},
+			"sourceSize": {
+				"w": 72,
+				"h": 50
+			}
+		},
+		{
+			"filename": "1 - kopie (7).png",
+			"frame": {
+				"x": 144,
+				"y": 50,
+				"w": 72,
+				"h": 50
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 72,
+				"h": 50
+			},
+			"sourceSize": {
+				"w": 72,
+				"h": 50
+			}
+		}
+	],
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 216,
+			"h": 150
+		},
+		"scale": "1"
+	}
+}
