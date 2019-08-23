@@ -1,8 +1,9 @@
 json array
 
 https://www.codeandweb.com/free-sprite-sheet-packer
+^ select 0px spacing en json array
 
-
+sprite size: 170*100
 
 stage1
 kyles		-	cops
